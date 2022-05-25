@@ -1,0 +1,35 @@
+#include<stdio.h>  
+#define M_PI 3.14159265358979323846 // declaring the variable of pie//
+void area_circumference(float, float*, float*);
+
+int main()
+{
+    float radius, area, circumference;
+
+     //declaring variables for radius,area and circumference//
+  //asking the user to enter the radius of the circle//
+    printf("Enter the radius of a Circle = ");
+    scanf("%f", &radius);
+// declaring the condition if the user put the radius in negative then it should output to change the radius positive//
+  if(radius>=0)
+  {
+  area_circumference(radius, &area, &circumference);
+
+    printf("Area of Circle = %0.1f\n", area);   //area output//
+    printf("Circumference of Circle = %0.1f\n",
+    circumference);  //circumference output//
+
+    return 0;
+  }
+  else
+  {
+    printf("Please enter a positive radius\n");
+  }
+}
+
+void area_circumference(float radius, float*area , float* circumference)
+//formula for calculating area and circumference//
+{
+    *area = ((M_PI) * (radius * radius));
+    *circumference =( 2 * (M_PI) * (radius));
+}
