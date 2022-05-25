@@ -1,0 +1,95 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+// defining string and array//
+#define STR 30
+#define ARR 30
+
+// As specified in the question //
+struct county
+{
+    char *longName;
+    char *shortName;
+    unsigned int population;
+};
+struct town
+{
+    char *name;
+    unsigned int population;
+    struct county aCounty;
+};
+// copying the data into the string //
+void copy(struct county *ptr, const struct county *pts)
+{
+    ptr->longName = malloc(STR);
+    ptr->shortName = malloc(STR);
+    ptr->population = pts->population;
+    strcpy(ptr->longName,pts->longName);
+    strcpy(ptr->shortName,pts->shortName);
+}
+// printing the data  //
+void print(const struct county *p)
+{
+    printf("%s %s %d\n", p->longName, p->shortName, p->population);
+}
+
+int main()
+{
+   // counties //
+    int Counties = 0;
+    struct county counties[ARR], c;
+    c.longName = malloc(STR),c.shortName = malloc(STR);
+   // opening the file and reading it//
+    FILE *one = fopen("counties.txt", "r");
+   // going through the data //
+    while(fscanf(one, "%s %s %d",c.longName,c.shortName,&c.population)==3)
+    {
+      copy(&(counties[Counties]), &c);
+      Counties++;
+    }
+    //closing the file one //
+    fclose(one);
+    // printing the counties //
+    printf("COUNTIES:\n\n");
+    for (int j = 0; j!= Counties; j++)
+    {
+       print(&(counties[j]));
+    }
+
+  // town //
+    int Town = 0;
+    struct town towns[ARR], t;
+    char countyName[STR];t.name = malloc(STR);
+    //opening the town file //
+    FILE *two = fopen("towns.txt", "r");
+    // going through the data //
+    while (fscanf(two, "%s%d%s",t.name,&t.population,countyName) == 3)
+    {
+        towns[Town].name = malloc(STR);
+        strcpy(towns[Town].name,t.name);
+        towns[Town].population = t.population;
+
+    for (int j= 0; j!=Counties; j++)
+        {
+        if (strcmp(counties[j].longName, countyName) == 0)
+            {
+              // putting town and counties together//
+                copy(&(towns[Town].aCounty), &(counties[j]));
+            }
+        }
+        Town++;
+    }
+
+    // closing the second file //
+    fclose(two);
+
+    // printing the town data //
+    printf("Towns:\n\n");
+    for (int j = 0; j!=Town; j++) {
+        printf("%s %d ", towns[j].name, towns[j].population);
+        print(&(towns[j].aCounty));
+
+    }
+
+
+}
