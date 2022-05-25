@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct item
+{
+    int item_code;
+    int item_count;
+};
+
+int main()
+{
+  /*initializing stock */
+    int myStock[7][2] = {{86956, 1}, {36568, 3}, {6565, 0},{999555, 22}, {85446, 12}, {84291, 88}, {78103, 10}};
+    struct item ITEMS[7];
+    for (int i = 0; i < 7; i++)
+    {
+        ITEMS[i].item_code = myStock[i][0];
+        ITEMS[i].item_count = myStock[i][1];
+    }
+  for(int i=0;i<7;i++){
+    /*Printing the item code and count */
+     printf("ITEM CODE:%i\nITEM COUNT:%i\n\n",ITEMS[i].item_code,ITEMS[i].item_count);
+  }
+
+
+    return 0;
+}
