@@ -1,0 +1,130 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include<stdbool.h>
+
+//Random number generator//
+int roll(void)
+{
+	int randnum = (rand()%6)+1;
+	return randnum;
+}
+//initialising the variable//
+void player1(); //Calling for player 1//
+void player2(); //calling for player 2//
+int main(void)
+{
+  // Calling the player 1 function//
+  player1();
+}
+//starting with the player 1 //
+void player1()
+{
+ int dice=0;
+ int player1score=0; //initialising the score as 0//
+ bool y= true;
+ char option; //options for roll and hold//
+ printf("player_1: Choose roll (r) or hold(h).\n");
+ while(y)
+ {
+
+    scanf("%c",&option);
+// If the option is for roll//
+   if(option=='r')
+      {
+        //random number generator//
+	   		dice = roll();
+	    	  if(dice!=1)
+	    	  {
+	           player1score+=dice;  //player1 score//
+	           printf("You rolled %i and total is %i \n",dice,player1score);
+              if(player1score >= 100)//Condition for winning loop//
+	           {
+                goto loop1;
+
+	            }
+             printf("player_1: Choose roll (r) or hold(h).\n");
+
+	    	  }
+	   		  else
+	       	{
+
+            printf("You rolled %i and your turn is over \n",dice); //If u get 1 then your turn is over //
+            y=false;
+	    	  }
+      }
+     //IF the user opt for hold then the condition will be for output of total score//
+		else if (option =='h')
+		  {
+
+	      printf("Your P1_total score is %i\n\n",player1score);
+        y=false;
+		  }
+  }
+  //condition for winning//
+  loop1:
+    if(player1score >= 100)
+	 {
+       player2();
+   }
+	else
+	 {
+        printf("Player 1 wins.\n");
+   }
+
+
+}
+//Function for calling player//
+void player2()
+{
+ int dice=0;
+ int player2score=0; ////initialising the score as 0//
+ bool z= true;
+ char option;
+ printf("player_2: Choose roll (r) or hold(h).\n");
+ while(z)
+ {
+
+    scanf("%c",&option);
+
+      if(option=='r')
+      {
+        //calling of roll funtion to get a random dice number/
+	   		dice = roll();
+	    	  if(dice!=1)
+	    	  {
+	           player2score+=dice; //player2 score/
+	           printf("You rolled %i and total is %i \n",dice,player2score);
+             if(player2score >= 100)
+	            {
+                goto loop2;
+              }
+             printf("player_2: Choose roll (r) or hold(h).\n");
+
+	    	  }
+	   		  else
+	       	{
+
+            printf("You rolled %i and your turn is over \n",dice);
+            z=false;
+	    	  }
+      }
+       //IF the user opt for hold then the condition will be for output of total score//
+		else if(option =='h')
+		  {
+
+	      printf("Your P2_total score is %i\n\n",player2score);
+        z=false;
+		  }
+  }
+  //condition for winning for player 2//
+  loop2:
+    if(player2score >=100)
+	 {
+         player1();
+	 }
+	 else
+	 {
+         printf("player 2 wins.\n");
+   }
+
+}
