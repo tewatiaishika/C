@@ -1,0 +1,47 @@
+#include<stdio.h>
+// initialising the variables//
+void copyArrayIndexWay(char * const newArray1, const char * const originalArray1)
+{
+  //using array indexing//
+  int x=0;
+  //Reading the whole array till the end//
+  while(originalArray1[x]!='\0')
+  {
+    //copying the elements of originalArray1 into newArray1//
+    newArray1[x]=originalArray1[x];
+    x++;
+  }
+  newArray1[x]='\0';
+
+}
+//Initialising for Array 2//
+void copyPointerWay(char *newArray2, const char *originalArray2)
+{
+   //using pointer//
+  int x=0;
+  char *copy;    //Declaring pointer//
+  //assigning pointer to base address of char array//
+  copy=newArray2;
+
+  while(*(originalArray2+x)!='\0')
+  {
+     //copying the elements of originalArray2 into newArray2//
+    *(copy+x)=*(originalArray2+x);
+    x++;
+  }
+  *(copy+x)='\0';
+
+}
+
+int main()
+{
+  const char  originalArray1[] ="COMP10120";
+  const char originalArray2[] ="COMP10110";
+  char  newArray1[10],newArray2[10];
+  copyArrayIndexWay(newArray1,originalArray1);
+  copyPointerWay(newArray2,originalArray2);
+  //Printing the elements of new array 1 and 2//
+  printf("The string has been successfully copied using arrayindex %s",newArray1);
+  printf("\nThe string has been successfully copied using pointer %s",newArray2);
+  return 0;
+}
