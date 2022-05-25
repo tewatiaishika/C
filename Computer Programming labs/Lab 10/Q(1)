@@ -1,0 +1,74 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+#define COMPONENTS  6
+
+struct node { /*struct code */
+    int data;
+    struct node *nextNode;
+};
+struct node *head; /*head of type node */
+/*function to copy content of array to a new single linked list*/
+
+void Place(int z)//* placing the element//
+{
+  /*Creating new node */
+    struct node *temporary = malloc(sizeof(struct node));
+    /*putting data */
+    temporary->data = z;
+    temporary->nextNode = NULL;
+    if (head!= NULL)
+    temporary->nextNode = head;
+    head = temporary;
+}
+void copy(int array[COMPONENTS],int n)                         //copying array elements and create linked list
+{
+  /* create node */
+     int j;
+    struct node*temporary = malloc(sizeof(struct node));
+    temporary->data=array[0];
+    temporary->nextNode=NULL;
+    head =temporary;
+
+    /* loop until size of linked list */
+    for(j=1;j<n;j++)
+    {
+       /* create node  */
+        struct node*temporary2= malloc(sizeof(struct node));
+       temporary->nextNode= temporary2;
+        temporary2->data = array[j];
+      temporary2->nextNode = NULL;
+        temporary=temporary2;
+     }
+}
+void printlist() /*function to print all the elements of the created linked list */
+{
+
+    struct node*temporary = head;
+    //* address //
+  printf("List: ");
+   while(temporary!=NULL)
+    {
+      printf(" %d ",temporary->data);
+ temporary=temporary->nextNode;
+    }
+
+}
+int main(void)
+{
+    int *array = (int*)calloc(COMPONENTS , sizeof(int));
+    int i = 0;
+    for (i = 0; i < COMPONENTS; ++i)
+    {
+      // asking for array elements//
+        printf("Enter array at [%d]: ", i);
+        scanf("%d", &array[i]);
+    }
+    for (i = 0; i < COMPONENTS; ++i)
+
+        printf("\narray [%d] = %d\n", i, array[i]);
+        copy(&array[COMPONENTS], COMPONENTS);
+        printlist(); /* function for print */
+        printf("\nCopied.\n");
+
+}
