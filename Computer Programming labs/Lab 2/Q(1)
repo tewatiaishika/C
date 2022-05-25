@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+// initialising the variables//
+
+int gcd(int x, int y);
+int main()
+{
+    int x, y;
+    printf("Enter the first positive integer: ");//asking the user to enter the first integer//
+    scanf("%d", &x);
+
+    printf("Enter the second positive integer: ");//asking the user to enter the second integer//
+    scanf("%d", &y);
+
+  if(x>0&&y>0)
+    {
+    printf("G.C.D of %d and %d is %d.", x, y, gcd(x,y));}
+    else
+    printf("Please enter both positive numbers\n");//condition if the user put negative numbers//
+    return 0;
+}
+
+int gcd(int x, int y) {
+    if (y == 0)  //if y is equal to 0, then gcd (x,y) is x////base case//
+        return x;
+    else
+        return gcd(y,x%y);//gcd (x,y) is gcd (y, x%y)// Recursive case//
+}
