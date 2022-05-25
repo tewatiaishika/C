@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void)
+{
+//initialising variable and declaring an array//
+int a[20],j,decimal;
+//asking the user to input decimal number that needs to be converted into binary number//
+printf("Enter the decimal number: ");
+scanf("%d",&decimal);
+
+for(j=0;decimal>0;j++)
+{
+  //first we need to divide the decimal number by 2 and then we need to store the remainder in an array and then we have to continue the process by doing the same again with the number left//
+a[j]=decimal%2;    // storing the remainder in the array//
+decimal=decimal/2;    //continuing the process//
+}
+printf("The Binary Number is ");
+
+for(j=j-1;j>=0;j--)
+{
+printf("%d",a[j]); //we have to print the binary number//
+}
+return 0;
+}
