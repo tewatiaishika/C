@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/ishik/CLionProjects/softwareassugnment2[!!!!!]/library.h
+
+/cygdrive/c/Users/ishik/CLionProjects/softwareassugnment2[!!!!!]/main.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+library.h
+/cygdrive/c/Users/ishik/CLionProjects/softwareassugnment2[!!!!!]/library.h
+
