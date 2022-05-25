@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+//function prototypes and an array initialisation//
+void printArray(int arraySize, int a[]);
+void reverseArray(int arraySize, int a[]);
+void randomiseArray(int arraySize, int a[]);
+void print(int arraySize, int a[]);
+void printSum(int arraySize, int a[]);
+//putting condition for how to reverse the array//
+void reverseArray(int arraySize, int a[])
+{
+ for (int j = 0; j!= arraySize/2; j++)
+    {
+        int temp;
+        int r;
+        temp = arraySize - 1 - j;
+        r = a[j];
+        a[j] = a[temp];
+        a[temp] = r;
+    }
+    print(arraySize,a);
+}
+ //putting condition for how to random array//
+void randomiseArray(int arraySize, int a[])
+{
+    for(int j = 0; j!= arraySize - 1; j++)
+    {
+        int temp;
+        int k;
+        temp= rand() % (arraySize - j) + j;
+        k = a[j];
+        a[j] = a[temp];
+        a[temp] = k;
+    }
+    //print the numbers//
+    print(arraySize,a);
+}
+//asking the user how he wants the array: randomised or reversed//
+void printArray(int arraySize, int a[])
+ {
+    printf("do you want to print the array in:0 random order or 1 reverse order\n");
+    printf("1 reverse order\n");
+    printf("2 random order\n");
+    int option;
+    scanf("%d", &option);
+    --option;
+    if (option == 0)
+        reverseArray(arraySize,a);
+    if (option == 1)
+        randomiseArray(arraySize,a);
+ }
+ //EXTRA:: putting condition for sum of the elements of the given array//
+void printSum(int arraySize, int a[]) {
+    int sum;
+    sum=0;
+    for (int j = 0; j != arraySize; ++j)
+        sum =sum+a[j];
+    printf("sum of the elements of the given array = %d\n", sum);
+}
+void print(int arraySize, int a[])
+{
+    for (int j=0; j!= arraySize; j++)
+    printf("%d ", a[j]);
+    printf("\n");
+}
+void test(int p, int myArray[])
+{
+printArray(p, myArray),reverseArray(p, myArray),randomiseArray(p, myArray),print(p, myArray);
+}
+void l(int p, int myArray[]) {
+    void (*fp[])(int p, int myArray[]) =
+     {&printArray,&reverseArray,&randomiseArray,&printSum};
+    while(1) {
+      printf("Press 0 for  printArray\n");
+      printf("Press 1 for reverseArray\n");
+      printf("Press 2 for randomiseArray\n");
+      printf("Press 3 for  printSum \n");
+        int option;
+        scanf("%d", &option);
+        fp[option](p, myArray);
+    }
+}
+
+int main()
+{
+rand();
+srand(time(0));
+int myArray[] = {2,4,6,8,10,12,14,16,18,20};
+int p = sizeof (myArray) / sizeof (myArray[0]);
+    l(p, myArray);
+    return 0;
+}
