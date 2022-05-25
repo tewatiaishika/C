@@ -1,0 +1,80 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    int timeplay;//how many times the user will play//
+    int cost;//total cost of the tickets//
+     int i, n;
+     int $=1;
+    int prize; //prize summary//
+
+
+
+      //asking the user how many times he wants to play//
+    printf("How many times you want to play?\n");
+    scanf("%d", &timeplay);
+
+
+    //output the total cost according to the time he wants to play (2 dollar per ticket)//
+    cost = (timeplay*2);
+    printf("Total Ticket cost = %d dollars\n", cost);
+
+
+
+
+
+  /* Intializes random number generator */
+
+
+  /* Print 5 random numbers from 0 to 70 */
+  for(int j=0;j<timeplay;j++)
+  {
+  printf("The five white random numbers:\n");
+  for( i = 0 ; i < 5 ; i++ )
+   {
+     printf("%d\n", rand() % 71);
+  }
+
+
+    /* Intializes random number generator */
+
+
+  /* Print 5 random numbers from 0 to 25 */
+  printf("The one random yellow number is:\n");
+  for( i = 0 ; i < 1 ; i++ )
+   {
+     printf("%d\n", rand() % 26);
+  }
+
+}
+
+//displaying summary of the prizes//
+printf("enter 1 to show and 0 to exit\n");
+scanf("%d", &prize);
+if(prize==1)
+{printf("The prizes will be as follows:\n");
+
+printf("If 1 yellow number matches = '2 dollars'\n\n");
+
+printf("If 1 yellow number and 1 white number matches = '4 dollars'\n\n");
+
+printf("If 1 yellow number and 2 white number matches , = '10 dollars'\n\n");
+
+printf("If 3 white number matches = '10 dollars'\n\n");
+
+printf("If 1 yellow number and 3 white number matches= '200 dollars'\n\n");
+
+printf("If 4 white number matches = '500 dollars'\n\n");
+
+printf("If 4 white number and 1 yellow number matches = '10,000 dollars'\n\n");
+
+printf("If 5 white number matches = '1,000,000 dollars'\n\n");
+
+printf("If 5 white number matches and 1 yellow number matches = 'JACKPOT!Congratulations!'\n\n");
+}
+
+else
+
+    return 0;
+}
