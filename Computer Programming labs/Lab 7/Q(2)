@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main(void)
+
+{
+int i;
+int sum=0; //sum for numbers from 1 to 50000 while ignoring all numbers which are evenly divisible by 3 and 5//
+int sum1=0;//sum for the users input//
+int r; //range given by the user//
+int ignore1,ignore2; //the number input by the user to ignore//
+{
+  {
+for (i=1;i<50000;i++)
+ {
+   if (i%3==0 || i%5==0)  //checking divisiblity //
+   continue;
+    else
+     sum=sum+i; //handling the sum situation//
+     }
+     //printing the sum//
+     printf("The sum is : %d\n", sum);
+    }
+ }
+{
+  {
+    //EXTRA ::::: asking the user for the input//
+printf("Please enter till which number you want the sum?");
+  scanf("%d",&r);
+  printf("Please enter 1st number (evenly divisible by) to ignore.");
+  scanf("%d",&ignore1);
+  printf("Please enter 2nd number (evenly divisible by) to ignore.");
+  scanf("%d",&ignore2);
+
+  for(i=1;i<r;i++)
+  {
+if
+   (i%ignore1==0 || i%ignore2==0)
+   continue;
+    else
+     sum1=sum1+i;
+     }
+     printf("The sum is : %d\n", sum1);
+  }
+}
+}
