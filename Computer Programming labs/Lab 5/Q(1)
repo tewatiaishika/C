@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main(void)
+{
+  //initialises arrays and variables//
+  char county[50];
+  char name[50];
+  int number;
+  int age;
+  int agreed;
+  int P=0; //total members//
+  int totalAge=0;
+//opens the file
+  FILE *one;
+  FILE *two;
+  //where the data is stored already//
+  one = fopen("customers.txt", "r");
+  //in this we have to transfer the content from the customers.txt//
+  two = fopen("customers2.txt", "w");
+  while(!feof(one))
+  {
+    //this will read the variables
+    fscanf(one,"%s %s  %d  %d  %d" ,county, name,&number, &age, &agreed);
+    if((agreed==1) && (strcmp(county, "Dublin")==0))
+    {
+      fprintf(two, "%s %s  %d  %d  %d\n", county, name, number,age, agreed);
+    totalAge =totalAge + age; //age gets incremented
+      P++;
+    }
+  }
+  //average age function//
+  int averageAge;
+  averageAge = totalAge/P;
+  fprintf(two,"Average age of the selected people is: %d", averageAge);
+  //closing the file//
+  fclose(one),fclose(two);
+}
