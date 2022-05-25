@@ -1,0 +1,185 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+// Prompts the user to enter the type (integer or float)
+int ask;
+printf("Which type of numbers you want to enter: PRESS[1 FOR int]  and  [0 FOR float]\n");
+scanf("%d",&ask);
+
+/* FOR INT VALUES */
+
+if (ask==1)
+{
+//This pointer will hold the base address of block created
+int *p;
+float sum=0;
+int i, n1,n2;
+int choice;
+
+printf("How many numbers you want to enter in the array:\n");
+scanf("%d", &n1);
+
+/* Dynamically allocate memory using calloc() */
+p = (int*)calloc(n1, sizeof(int));
+
+
+// printing the elements of array
+
+for(i = 0; i <n1 ; i++)
+{
+    printf("Enter element at index %d: ", i);
+    scanf("%d", p+i);
+}
+
+ // It asks the user to enter the total number of elements in the array and after that it will ask to add new numbers//
+  // PS: THE USER SHOULD INPUT HERE THE TOTAL SIZE OF ARRAY AND THEN IT WILL ASK FOR THE NEW ELEMENTS OF THE ARRAY //
+
+printf("Are there any element that you wish to add in the array[Press 1 for yes and 0 for no]\n");
+scanf("%d",&choice);
+
+// if he wants to add//
+if(choice==1)
+
+{
+
+printf("Number of total elements you want in the new array:");
+scanf("%d", &n2);
+
+//rellocating the memory to bigger block
+p = (int*)realloc(p, n2 * sizeof(int));
+
+//asking for more elements
+for(i = n1; i < n2; i++)
+{
+    printf("Enter element at index %d: ", i);
+    scanf("%d", p+i);
+}
+
+//print the final array
+printf("\nFinal array: \n\n");
+
+for(i = 0; i < n2; i++)
+{
+     printf("%d\n", *(p+i) );
+}
+
+//  Function for Average
+
+for(i = 0; i < n2; i++)
+{
+      sum += *(p+i);
+}
+   // printing the Average
+    printf("\nAverage marks = %.2f\n", sum/n2);
+}
+
+// if the user don't want to add any more values
+
+else if(choice==0)
+{
+
+//print the final array
+printf("\nThe Final array is: \n");
+
+for(i = 0; i < n1; i++)
+{
+     printf("%d\n", *(p+i) );
+}
+
+// for getting the Average
+
+for(i = 0; i < n1; i++)
+{
+    sum += *(p+i);
+}
+    printf("\nAverage marks = %.2f\n", sum/n1);
+}
+}
+
+// FOR FLOAT NUMBERS
+else if(ask==0)
+{
+//This pointer will hold the base address of block created //
+float *p,sum=0;
+int i, n1,n2;
+int choice;
+
+printf("How many numbers you want to enter in the array: \n ");
+scanf("%d", &n1);
+
+/* Dynamically allocate memory using calloc() */
+p = (float*)calloc(n1, sizeof(float));
+
+//memory successfully allocated
+// printing the elements of array
+for(i = 0; i <n1 ; i++)
+{
+    printf("Enter element at index %d: ", i);
+    scanf("%f", p+i);
+}
+
+//asking the user if there are other numbers he wants to input
+printf("Are there any element that you wish to add in the array[Press 1 for yes and 0 for no]\n");
+scanf("%d",&choice);
+
+// if he wants to add//
+if(choice==1)
+{
+  // It asks the user to enter the total number of elements in the array and after that it will ask to add new numbers//
+  // PS: THE USER SHOULD INPUT HERE THE TOTAL SIZE OF ARRAY AND THEN IT WILL ASK FOR THE NEW ELEMENTS OF THE ARRAY //
+printf("Number of total elements you want in the new array:");
+scanf("%d", &n2);
+
+p = (float*)realloc(p, n2 * sizeof(float));
+
+// printing the elements of array
+
+for(i = n1; i < n2; i++)
+{
+    printf("Enter element at index %d: ", i);
+    scanf("%f", p+i);
+}
+
+//print the final array
+printf("\nFinal array: \n\n");
+
+for(i = 0; i < n2; i++)
+{
+     printf("%f\n", *(p+i) );
+}
+
+// for getting the Average
+for(i = 0; i < n2; i++)
+{
+     sum += *(p+i);
+}
+
+printf("\nAverage marks = %.2f\n", sum/n2);
+
+}
+
+// if the user don't want to add any more values
+
+else if(choice==0)
+{
+//print the final array
+printf("\nFinal array: \n");
+
+for(i = 0; i < n1; i++)
+{
+    printf("%f\n", *(p+i) );
+}
+// for getting the Average
+
+for(i = 0; i < n1; i++)
+{
+     sum += *(p+i);
+}
+
+printf("\nAverage marks = %.2f\n", sum/n1);
+}
+
+}
+}
